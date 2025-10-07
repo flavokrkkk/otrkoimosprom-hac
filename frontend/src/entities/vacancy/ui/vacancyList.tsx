@@ -40,9 +40,7 @@ export const VacancyList = () => {
             width={120}
             height={120}
           />
-          <p className="text-sm text-zinc-400">
-            Хакатонов на выбранную дату нет.
-          </p>
+          <p className="text-sm text-zinc-400">Вакансий нет.</p>
         </div>
       )}
     </div>
