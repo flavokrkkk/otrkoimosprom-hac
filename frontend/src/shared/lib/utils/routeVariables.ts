@@ -1,9 +1,11 @@
 export const enum ERouteNames {
   DEFAULT_ROUTE = "/",
   EMPTY_ROUTE = "",
-  DASHBOARD_ROUTE = "dashboard",
+  DASHBOARD_ROUTE = "dashboard-applicant",
   INTERVIEWS_ROUTE = "interviews",
   DASHBOARD_ADMIN_ROUTE = "dashboard-admin",
+  DASHBOARD_COMPANY_ROUTE = "dashboard-company",
+  DASHBOARD_UNIVERSITY_ROUTE = "dashboard-university",
   VACANCY_ROUTE = "vacancy/:vacancyId",
   VACANCY_DETAIL_ROUTE = "vacancy",
   STATISTICS_ROUTE = "statistics",

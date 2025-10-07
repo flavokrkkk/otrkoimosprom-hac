@@ -3,6 +3,7 @@ import {
   useUpdateProfile,
 } from "@/entities/profile/hooks/useCurrentProfile";
 import { ProfileInfoBadge } from "@/features/profile/ui/profileInfoBadge";
+import { ProfileUniversityBadge } from "@/features/profile/ui/profileUniversityBadge";
 import { ProfileUploadCvBadge } from "@/features/profile/ui/profileUploadCvBadge";
 import { EDrawerVariables, ERouteNames } from "@/shared";
 import { useActions } from "@/shared/hooks/useActions";
@@ -17,7 +18,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
-  //далее будет запрос на получение профиля и мутация с оптимистичным обновлением
   const { data: currentProfile, isSuccess, isPending } = useCurrentProfile();
 
   const navigate = useNavigate();
@@ -72,6 +72,15 @@ const ProfilePage = () => {
           currentProfile={currentProfile}
           onClick={handleOpenProfileInfoDrawer}
         />
+
+        <ProfileUniversityBadge
+          universityData={{
+            course: 2,
+            groupName: "БВТ2201",
+            universityName: "Московский Политехнический университет",
+          }}
+          onClick={() => {}}
+        />
         <ProfileUploadCvBadge
           profileCv={currentProfile.cv_file ?? null}
           onClick={handleOpenProfileCvDrawer}
@@ -85,7 +94,7 @@ const ProfilePage = () => {
           }
           title={
             <>
-              Мои <br /> собеседования
+              Мои <br /> отклики
             </>
           }
           onClick={handleToInterviews}

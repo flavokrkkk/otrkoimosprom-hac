@@ -1,3 +1,10 @@
+export const enum EAuthRoles {
+  UNIVERSITY = "UNIVERSITY",
+  COMPANY = "COMPANY",
+  APPLICANT = "APPLICANT",
+  ADMIN = "ADMIN",
+}
+
 export interface LoginDto {
   email: string;
   password: string;
@@ -7,6 +14,7 @@ export interface RegisterDto {
   username: string;
   email: string;
   password: string;
+  role: EAuthRoles;
 }
 
 export interface AuthResponse {

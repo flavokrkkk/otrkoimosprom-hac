@@ -1,3 +1,4 @@
+import { authSliceActions } from "@/entities/auth/model/store/authSlice";
 import { drawerActions } from "@/entities/drawer/model/store/drawerSlice";
 import { modalActions } from "@/entities/modal/model/store/modalSlice";
 import { socketActions } from "@/entities/socket/model/store/socketSlice";
@@ -14,6 +15,7 @@ export const useActions = () => {
       ...vacancyActions,
       ...socketActions,
       ...modalActions,
+      ...authSliceActions,
     },
     dispatch
   );

@@ -1,5 +1,5 @@
-import RootPage from "./(main)/rootPage";
-import ErrorPage from "./(main)/errorPage";
+import RootPage from "./(applicant)/rootPage";
+import ErrorPage from "./(applicant)/errorPage";
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import { lazy } from "react";
 import AuthPage from "./(auth)/authPage";
@@ -8,15 +8,21 @@ import { vacancyDetailAction } from "@/entities/vacancy/actions/vacancyDetailAct
 import { routesWithHoc } from "@/shared/lib/utils/routesWithHoc";
 import { privatePage } from "@/entities/viewer/lib/hoc/privatePage";
 
-const DashboardPage = lazy(() => import("@/pages/(main)/dashboardPage"));
-const ProfilePage = lazy(() => import("@/pages/(main)/profilePage"));
+const ApplicantPage = lazy(() => import("@/pages/(applicant)/applicantPage"));
+const ProfilePage = lazy(() => import("@/pages/(applicant)/profilePage"));
 
-const AnalyticsPage = lazy(() => import("@/pages/(admin)/analyticsPage"));
-const CandidatesPage = lazy(() => import("@/pages/(admin)/candidatesPage"));
-const ManagementPage = lazy(() => import("@/pages/(admin)/managementPage"));
+const AdminPage = lazy(() => import("@/pages/(admin)/adminPage"));
 
-const VacancyPage = lazy(() => import("@/pages/(main)/vacancyPage"));
-const InterviewsPage = lazy(() => import("@/pages/(main)/interviewsPage"));
+const UniversityPage = lazy(
+  () => import("@/pages/(university)/universityPage")
+);
+
+const CompanyPage = lazy(() => import("@/pages/(company)/companyPage"));
+const CandidatesPage = lazy(() => import("@/pages/(company)/candidatesPage"));
+const ManagementPage = lazy(() => import("@/pages/(company)/managementPage"));
+
+const VacancyPage = lazy(() => import("@/pages/(applicant)/vacancyPage"));
+const InterviewsPage = lazy(() => import("@/pages/(applicant)/interviewsPage"));
 
 const RegisterPage = lazy(() => import("@/pages/(auth)/registerPage"));
 const LoginPage = lazy(() => import("@/pages/(auth)/loginPage"));
@@ -42,7 +48,7 @@ export const routes = createBrowserRouter([
               children: [
                 {
                   path: ERouteNames.EMPTY_ROUTE,
-                  element: <DashboardPage />,
+                  element: <ApplicantPage />,
                 },
                 {
                   path: ERouteNames.VACANCY_DETAIL_ROUTE,
@@ -72,12 +78,12 @@ export const routes = createBrowserRouter([
               ],
             },
             {
-              path: ERouteNames.DASHBOARD_ADMIN_ROUTE,
+              path: ERouteNames.DASHBOARD_COMPANY_ROUTE,
               element: <Outlet />,
               children: [
                 {
                   path: ERouteNames.EMPTY_ROUTE,
-                  element: <AnalyticsPage />,
+                  element: <CompanyPage />,
                 },
                 {
                   path: ERouteNames.CANDIDATES_ROUTE,
@@ -86,6 +92,26 @@ export const routes = createBrowserRouter([
                 {
                   path: ERouteNames.MANAGEMENT_ROUTE,
                   element: <ManagementPage />,
+                },
+              ],
+            },
+            {
+              path: ERouteNames.DASHBOARD_UNIVERSITY_ROUTE,
+              element: <Outlet />,
+              children: [
+                {
+                  path: ERouteNames.EMPTY_ROUTE,
+                  element: <UniversityPage />,
+                },
+              ],
+            },
+            {
+              path: ERouteNames.DASHBOARD_ADMIN_ROUTE,
+              element: <Outlet />,
+              children: [
+                {
+                  path: ERouteNames.EMPTY_ROUTE,
+                  element: <AdminPage />,
                 },
               ],
             },

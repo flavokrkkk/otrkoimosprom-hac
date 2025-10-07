@@ -1,3 +1,4 @@
+import { authSlice } from "@/entities/auth/model/store/authSlice";
 import { drawerSlice } from "@/entities/drawer/model/store/drawerSlice";
 import { modalSlice } from "@/entities/modal/model/store/modalSlice";
 import { socketSlice } from "@/entities/socket/model/store/socketSlice";
@@ -13,7 +14,8 @@ export const rootReducer = combineSlices(
   drawerSlice,
   vacancySlice,
   socketSlice,
-  modalSlice
+  modalSlice,
+  authSlice
 );
 
 export const store = configureStore({

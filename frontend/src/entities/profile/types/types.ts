@@ -1,3 +1,5 @@
+import { UniversityData } from "@/entities/university/types/types";
+
 export interface Profile {
   id: number;
   email: string;
@@ -5,4 +7,5 @@ export interface Profile {
   image_url: string;
   cv_file: string;
   is_admin: true;
+  university: UniversityData;
 }

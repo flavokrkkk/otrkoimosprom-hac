@@ -12,8 +12,14 @@ import { Button } from "@/shared/ui";
 import { Link } from "react-router-dom";
 import { ERouteNames } from "@/shared";
 import { useRegisterMutation } from "../hooks/useRegister";
+import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { selectAuthRole } from "../model/store/authSlice";
+import { selectLabel } from "../lib/constants";
+import { EAuthRoles } from "../types/types";
 
 export const RegisterForm = () => {
+  const selectRole = useAppSelector(selectAuthRole);
+
   const form = useForm<TypeRegisterSchema>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -31,16 +37,18 @@ export const RegisterForm = () => {
     formState: { errors },
   } = form;
 
-  const onSubmit = (data: TypeRegisterSchema) => {
+  const onSubmit = (authForm: TypeRegisterSchema) => {
+    if (!selectRole) return;
+    mutate({ ...authForm, role: selectRole });
     reset();
-    mutate(data);
   };
+
   return (
-    <div className="space-y-2 w-full flex items-center justify-center">
+    <div className="space-y-2 flex flex-col w-full justify-center h-full bg-neutral-800 border-zinc-700 p-6 md:p-10 rounded-3xl">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-3 flex flex-col w-full h-full justify-between max-w-xs"
+          className="space-y-3 flex flex-col w-full h-full justify-between"
         >
           <section className="space-y-3">
             <h2 className="font-medium text-white text-lg text-center">
@@ -87,7 +95,7 @@ export const RegisterForm = () => {
                 <FormItem className="relative gap-1">
                   <FloatingLabelInput
                     {...field}
-                    label="Фио"
+                    label={selectLabel[selectRole ?? EAuthRoles.APPLICANT]}
                     className={cn(
                       "py-1.5 text-white bg-neutral-900 rounded-xl shadow-sm border-neutral-900",
                       errors.username && "border-red-700"

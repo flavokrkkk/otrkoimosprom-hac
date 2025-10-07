@@ -8,7 +8,6 @@ import { CircleAlert, X } from "lucide-react";
 import { Button } from "@/shared/ui";
 import { Link } from "react-router-dom";
 import { ERouteNames } from "@/shared";
-import clsx from "clsx";
 import { useLoginMutation } from "../hooks/useLogin";
 
 export const LoginForm = () => {
@@ -29,15 +28,16 @@ export const LoginForm = () => {
   } = form;
 
   const onSubmit = (data: TypeLoginSchema) => {
-    reset();
     mutate(data);
+    reset();
   };
+
   return (
-    <div className="space-y-2 w-full flex items-center justify-center">
+    <div className="space-y-2 flex flex-col w-full justify-center h-full bg-neutral-800 border-zinc-700 p-6 md:p-10 rounded-3xl">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-3 flex flex-col w-full h-full justify-between max-w-xs"
+          className="space-y-3 flex flex-col w-full h-full justify-between"
         >
           <section className="space-y-3">
             <h2 className="font-medium text-white text-lg text-center">
@@ -109,43 +109,6 @@ export const LoginForm = () => {
                       <CircleAlert className="w-4 h-4" />
                     </button>
                   )}
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="role"
-              render={({ field }) => (
-                <FormItem className="flex">
-                  <div className="w-full">
-                    <Button
-                      variant={"outline"}
-                      type="button"
-                      className={clsx(
-                        "rounded-lg w-full border bg-neutral-900 text-zinc-300 border-neutral-900",
-                        field.value === "user" &&
-                          "text-blue-700 border border-blue-700 hover:text-blue-800"
-                      )}
-                      onClick={() => field.onChange("user")}
-                    >
-                      Я – Пользователь
-                    </Button>
-                  </div>
-
-                  <div className="w-full">
-                    <Button
-                      variant={"outline"}
-                      type="button"
-                      className={clsx(
-                        "rounded-lg w-full border bg-neutral-900 text-zinc-300 border-neutral-900",
-                        field.value === "admin" &&
-                          "text-pink-700 border border-pink-700 hover:text-pink-800"
-                      )}
-                      onClick={() => field.onChange("admin")}
-                    >
-                      Я – Админ
-                    </Button>
-                  </div>
                 </FormItem>
               )}
             />
