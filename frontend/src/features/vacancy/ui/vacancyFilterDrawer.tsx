@@ -40,7 +40,7 @@ export const VacancyFilterDrawer = () => {
   return (
     <Drawer open={isDrawerOpen} onClose={handleClose}>
       <DrawerContent className="border border-zinc-800">
-        <div className="mx-auto w-full max-w-md">
+        <div>
           <DrawerHeader>
             <DrawerTitle className="text-lg text-white font-semibold text-center">
               Фильтры вакансий

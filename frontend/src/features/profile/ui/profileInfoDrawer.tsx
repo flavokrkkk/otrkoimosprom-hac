@@ -70,7 +70,7 @@ export const ProfileInfoDrawer = () => {
   return (
     <Drawer open={isDrawerOpen} onClose={handleClose}>
       <DrawerContent className="border border-zinc-800 bg-black text-white">
-        <div className="mx-auto w-full max-w-md">
+        <div>
           <DrawerHeader>
             <DrawerTitle className="text-lg hidden text-white font-semibold text-start">
               Профиль
