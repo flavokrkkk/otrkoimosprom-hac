@@ -16,6 +16,7 @@ import { useAppSelector } from "@/shared/hooks/useAppSelector";
 import { selectAuthRole } from "../model/store/authSlice";
 import { selectLabel } from "../lib/constants";
 import { EAuthRoles } from "../types/types";
+import { Combobox } from "@/shared/ui/combobox/combobox";
 
 export const RegisterForm = () => {
   const selectRole = useAppSelector(selectAuthRole);
@@ -88,40 +89,58 @@ export const RegisterForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem className="relative gap-1">
-                  <FloatingLabelInput
-                    {...field}
-                    label={selectLabel[selectRole ?? EAuthRoles.APPLICANT]}
-                    className={cn(
-                      "py-1.5 text-white bg-neutral-900 rounded-xl shadow-sm border-neutral-900",
-                      errors.username && "border-red-700"
+            {selectRole === EAuthRoles.UNIVERSITY ? (
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem className="relative gap-1">
+                    <Combobox
+                      {...field}
+                      options={[]}
+                      onChangeValue={field.onChange}
+                      onChangeSearchValue={() => {}}
+                    />
+                  </FormItem>
+                )}
+              />
+            ) : (
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem className="relative gap-1">
+                    <FloatingLabelInput
+                      {...field}
+                      label={selectLabel[selectRole ?? EAuthRoles.APPLICANT]}
+                      className={cn(
+                        "py-1.5 text-white bg-neutral-900 rounded-xl shadow-sm border-neutral-900",
+                        errors.username && "border-red-700"
+                      )}
+                    />
+                    {errors.username && (
+                      <span className="text-red-800 text-xs px-3">
+                        {errors.username.message}
+                      </span>
                     )}
-                  />
-                  {errors.username && (
-                    <span className="text-red-800 text-xs px-3">
-                      {errors.username.message}
-                    </span>
-                  )}
-                  {field.value && !errors.username && (
-                    <button
-                      className="absolute right-4 top-4.5 text-blue-800 cursor-pointer"
-                      onClick={() => field.onChange("")}
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  )}
-                  {errors.username && (
-                    <button className="absolute right-4 top-4.5 text-red-800 cursor-pointer">
-                      <CircleAlert className="w-4 h-4" />
-                    </button>
-                  )}
-                </FormItem>
-              )}
-            />
+                    {field.value && !errors.username && (
+                      <button
+                        className="absolute right-4 top-4.5 text-blue-800 cursor-pointer"
+                        onClick={() => field.onChange("")}
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    )}
+                    {errors.username && (
+                      <button className="absolute right-4 top-4.5 text-red-800 cursor-pointer">
+                        <CircleAlert className="w-4 h-4" />
+                      </button>
+                    )}
+                  </FormItem>
+                )}
+              />
+            )}
+
             <FormField
               control={form.control}
               name="password"

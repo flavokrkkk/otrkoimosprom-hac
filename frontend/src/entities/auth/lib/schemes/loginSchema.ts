@@ -23,8 +23,5 @@ export const LoginSchema = z.object({
       message: "Пароль не должен превышать 128 символов",
     })
     .trim(),
-  role: z.enum(["user", "admin"], {
-    message: "Роль должна быть 'user' или 'admin'",
-  }),
 });
 export type TypeLoginSchema = z.infer<typeof LoginSchema>;
