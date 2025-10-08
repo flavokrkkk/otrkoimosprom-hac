@@ -4,7 +4,6 @@ import { useActions } from "@/shared/hooks/useActions";
 import { useAppSelector } from "@/shared/hooks/useAppSelector";
 import { Input } from "@/shared/ui/input";
 import { Slider } from "@/shared/ui/slider/slider";
-import { ToggleGroup, ToggleGroupItem } from "@/shared/ui/toggle/toggle-group";
 import {
   ChangeEvent,
   forwardRef,
@@ -19,16 +18,6 @@ export const VacancyFilterContent = forwardRef((_, ref) => {
   const [vacancyLocalFilters, setVacancyLocalFilters] = useState<
     Partial<VacancyFilter>
   >({ ...vacancyFIlters });
-
-  const handleSetVacancyFilter = useCallback((selectFilter: string) => {
-    const [key, value] = selectFilter.split(":");
-
-    if (!key || !value) {
-      return;
-    }
-
-    setVacancyLocalFilters((prev) => ({ ...prev, [key]: value }));
-  }, []);
 
   const handleSalaryChange = useCallback((value: number[]) => {
     setVacancyLocalFilters((prev) => ({ ...prev, salary: String(value) }));
@@ -96,120 +85,6 @@ export const VacancyFilterContent = forwardRef((_, ref) => {
           placeholder="Регион"
           onChange={handleChangeVacancyFilter}
         />
-      </div>
-      <div className="flex flex-col space-y-2">
-        <span className="text-sm font-medium text-gray-300">Занятость</span>
-        <ToggleGroup
-          type="single"
-          value={
-            vacancyLocalFilters.busyness
-              ? `busyness:${vacancyLocalFilters.busyness}`
-              : ""
-          }
-          className="flex gap-2"
-          onValueChange={handleSetVacancyFilter}
-        >
-          <ToggleGroupItem
-            value="busyness:Фултайм"
-            className="rounded-full px-4 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            Фултайм
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="busyness:Частичная"
-            className="rounded-full px-4 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            Частичная
-          </ToggleGroupItem>
-        </ToggleGroup>
-      </div>
-      <div className="flex flex-col space-y-2">
-        <span className="text-sm font-medium text-gray-300">Опыт работы</span>
-        <ToggleGroup
-          type="single"
-          value={
-            vacancyLocalFilters.experience
-              ? `experience:${vacancyLocalFilters.experience}`
-              : ""
-          }
-          className="flex gap-2"
-          onValueChange={handleSetVacancyFilter}
-        >
-          <ToggleGroupItem
-            value="experience:Нет опыта"
-            className="rounded-full px-8 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            Нет опыта
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="experience:1-3"
-            className="rounded-full px-4 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            1-3
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="experience:3-6"
-            className="rounded-full px-4 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            3-6
-          </ToggleGroupItem>
-        </ToggleGroup>
-      </div>
-      <div className="flex flex-col space-y-2">
-        <span className="text-sm font-medium text-gray-300">Формат</span>
-        <ToggleGroup
-          type="single"
-          value={
-            vacancyLocalFilters.format
-              ? `format:${vacancyLocalFilters.format}`
-              : ""
-          }
-          className="flex gap-2"
-          onValueChange={handleSetVacancyFilter}
-        >
-          <ToggleGroupItem
-            value="format:Офис"
-            className="rounded-full px-4 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            Офис
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="format:Гибрид"
-            className="rounded-full px-4 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            Гибрид
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="format:Удалённо"
-            className="rounded-full px-5 py-1 text-gray-300 
-               bg-neutral-900 transition 
-               data-[state=on]:bg-blue-600 data-[state=on]:text-white 
-               data-[state=on]:border-blue-600 shadow-sm"
-          >
-            Удалённо
-          </ToggleGroupItem>
-        </ToggleGroup>
       </div>
     </div>
   );

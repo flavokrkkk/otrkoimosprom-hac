@@ -97,7 +97,7 @@ const VacancyPage = () => {
           )}
         </div>
       </section>
-      <SelectionWidget onClick={() => {}} />
+      <SelectionWidget onClick={() => console.log("Откликнуться")} />
     </div>
   );
 };

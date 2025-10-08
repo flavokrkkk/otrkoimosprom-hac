@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SlidersHorizontal, Star } from "lucide-react";
 import { useMemo } from "react";
 
-export const VacancyFIlter = () => {
+export const InternshipFilter = () => {
   const vacancyFilters = useAppSelector(vacancySelectors.vacancyFIlters);
   const { setOpenDrawer, setVacancyFilters } = useActions();
 
@@ -44,7 +44,7 @@ export const VacancyFIlter = () => {
           >
             <Star className="w-5 h-5 text-zinc-400" />
           </button>
-          <h2 className="text-2xl font-medium">Вакансии</h2>
+          <h2 className="text-2xl font-medium">Стажировки</h2>
         </div>
         <button
           className="flex cursor-pointer items-center gap-2 bg-neutral-900 hover:bg-neutral-800 transition-colors px-3 py-2 rounded-xl"

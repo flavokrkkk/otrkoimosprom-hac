@@ -33,7 +33,7 @@ export const ProfileWidget = () => {
           icon={<Award className="w-5 h-5 text-gray-300" />}
           title={
             <>
-              Мои <br /> достижения
+              Избранные <br /> вакансии
             </>
           }
           onClick={() => {}}

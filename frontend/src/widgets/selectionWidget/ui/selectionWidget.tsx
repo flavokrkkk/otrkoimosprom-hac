@@ -34,7 +34,7 @@ export function SelectionWidget({ onClick }: SelectionWidgetProps) {
         <section className="p-4">
           <div className="flex items-center justify-between">
             <p className="text-lg font-medium text-white sm:text-xl">
-              Доступен AI отбор
+              Доступен отклик
             </p>
 
             <Button
@@ -64,8 +64,8 @@ export function SelectionWidget({ onClick }: SelectionWidgetProps) {
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 <p className="max-w-[34rem] text-sm leading-5 text-white/80">
-                  Ты можешь пройти AI собеседование, которое поможет нам узнать
-                  друг друга
+                  Убедись, что твои навыки и опыт соответствуют требованиям
+                  вакансии, прежде чем откликаться.
                 </p>
               </motion.div>
             )}
@@ -78,7 +78,7 @@ export function SelectionWidget({ onClick }: SelectionWidgetProps) {
             className="w-full rounded-2xl py-5 bg-white text-gray-900 hover:bg-white/90"
             onClick={onClick}
           >
-            Пройти собеседование с AI
+            Откликнуться
           </Button>
         </div>
 
