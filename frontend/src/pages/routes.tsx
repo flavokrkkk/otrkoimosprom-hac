@@ -17,6 +17,11 @@ const UniversityPage = lazy(
   () => import("@/pages/(university)/universityPage")
 );
 
+const StudentPage = lazy(() => import("@/pages/(university)/studentPage"));
+const UniversityInternshipPage = lazy(
+  () => import("@/pages/(university)/universityInternshipPage")
+);
+
 const CompanyPage = lazy(() => import("@/pages/(company)/companyPage"));
 const CandidatesPage = lazy(() => import("@/pages/(company)/candidatesPage"));
 const ManagementPage = lazy(() => import("@/pages/(company)/managementPage"));
@@ -102,6 +107,14 @@ export const routes = createBrowserRouter([
                 {
                   path: ERouteNames.EMPTY_ROUTE,
                   element: <UniversityPage />,
+                },
+                {
+                  path: ERouteNames.STUDENT_ROUTE,
+                  element: <StudentPage />,
+                },
+                {
+                  path: ERouteNames.UNIVERSITY_INTERNSHIP_ROUTE,
+                  element: <UniversityInternshipPage />,
                 },
               ],
             },

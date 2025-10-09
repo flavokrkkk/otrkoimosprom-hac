@@ -22,6 +22,17 @@ export interface CreateVacancyDto {
   requirements: VacancySection;
 }
 
+export type InternshipListing = {
+  id: string;
+  companyName: string;
+  position: string;
+  requiredSkills: string[];
+  availableSlots: number;
+  attachedStudents: number[];
+  status: "open" | "closed";
+  deadline: string;
+};
+
 export interface Vacancy {
   id: number;
   company: Company;

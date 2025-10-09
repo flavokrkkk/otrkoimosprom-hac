@@ -14,3 +14,17 @@ export interface UniversitySuggest {
     okpo: string;
   };
 }
+
+export interface Student {
+  id: number;
+  name: string;
+  imageUrl: string;
+  course: number;
+  skills: string[];
+  groupName: string;
+  githubUrl: string;
+  cv_file?: string;
+  initialRating: number;
+  recommended?: boolean;
+  recommendedComment?: string;
+}

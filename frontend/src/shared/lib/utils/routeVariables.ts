@@ -15,4 +15,6 @@ export const enum ERouteNames {
   PROFILE_ROUTE = "profile",
   CANDIDATES_ROUTE = "candidates",
   MANAGEMENT_ROUTE = "management",
+  STUDENT_ROUTE = "student/:studentId",
+  UNIVERSITY_INTERNSHIP_ROUTE = "university-internship",
 }
